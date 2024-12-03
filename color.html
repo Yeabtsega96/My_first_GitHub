@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BackgroundColor Changer</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #ffffff;
+      padding: 20px;
+    }
+    p{
+      text-align: center;
+      margin-top: 20vh;
+      font-size: 1.5rem;
+    }
+    button {
+      display: block;
+      width: 240px;
+      height: 50px;
+      margin: 10vh auto;
+      background-color: black;
+      color: #dfdfdf;
+      font-size: 1rem;
+      text-align: center;
+      border: 2px solid red;
+      border-radius: 3px;
+    }
+
+  </style>
+</head>
+<body>
+  <p>Hexa-code: <span id="hexa-code">#ffffff</span></p>
+  <button id="change-btn" onclick="randomColor()">Change the BackgroundColor</button>
+
+  <script>
+   const hexaCodeEl = document.getElementById("hexa-code")
+   const changeBtn = document.getElementById("change-btn")
+   const body = document.querySelector("body");
+   const paragraf = document.querySelector("p");
+
+   let container = [1,2,3,4,5,6,7,"A","B","C","D","E","F"];
+
+   function randomColor() {
+      let hexaCode = "#";
+      for (let i = 0; i < 6; i++) {
+      let randomNum = Math.floor(Math.random() * 13)
+      hexaCode += (container[randomNum])
+      }
+
+      if (hexaCode[1] <= 7 && hexaCode[1] > 0) {
+       paragraf.style.color = "#dfdfdf";
+      } else {
+        paragraf.style.color = "#111"; 
+      }
+
+      hexaCodeEl.textContent = hexaCode;
+      body.style.backgroundColor = hexaCode;
+   }
+   
+  </script>
+</body>
+</html>
